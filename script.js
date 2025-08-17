@@ -4,6 +4,7 @@ const todoListUL = document.getElementById('todo-list');
 
 let allTodos = getTodos();
 updateTodoList();
+updateProgressBar(); // Add this line
 
 todoForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -21,6 +22,7 @@ function addTodo(){
         allTodos.push(todoObject);
         updateTodoList();
         saveTodos();
+        updateProgressBar(); // Add this line
         todoInput.value = "";
     }
 }
@@ -54,6 +56,7 @@ function createTodoItem(todo, todoIndex){
     todoCheckbox.addEventListener("click", ()=>{
         allTodos[todoIndex].completed = todoCheckbox.checked;
         saveTodos();
+        updateProgressBar(); // Add this line
     });
     todoCheckbox.checked = todo.completed;
 
@@ -66,6 +69,7 @@ function deleteTodoItem(todoIndex) {
     allTodos = allTodos.filter((_, index) => index !== todoIndex);
     saveTodos();
     updateTodoList();
+    updateProgressBar(); // Add this line
     
 }
 
@@ -77,4 +81,36 @@ function saveTodos() {
 function getTodos(){
     const todos = localStorage.getItem("todos") || "[]";
     return JSON.parse(todos);
+}
+
+
+
+const durationButton = document.querySelector('.duration');
+
+durationButton.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent event bubbling
+    const timeList = document.querySelector('.time-list');
+    timeList.style.display = timeList.style.display === 'none' ? 'flex' : 'none';
+});
+
+// Close the dropdown when clicking elsewhere
+document.querySelector('.shedule').addEventListener('click', function(e) {
+    if (!e.target.closest('.shedule')) {
+        document.querySelector('.time-list').style.display = 'none';
+    }
+});
+
+
+function updateProgressBar() {
+    if (allTodos.length === 0) {
+        document.querySelector('.progress-fill').style.width = '0%';
+        document.querySelector('.progress-percent').textContent = '0%';
+        return;
+    }
+    
+    const completedCount = allTodos.filter(todo => todo.completed).length;
+    const progressPercent = Math.round((completedCount / allTodos.length) * 100);
+    
+    document.querySelector('.progress-fill').style.width = `${progressPercent}%`;
+    document.querySelector('.progress-percent').textContent = `${progressPercent}%`;
 }
