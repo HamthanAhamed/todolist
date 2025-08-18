@@ -46,7 +46,6 @@ h1{
     flex-direction: column;
     gap: 10px;
     position: absolute;
-
     top: 140px; /* Increased to account for both navbars */
     bottom: 60px; /* Add bottom spacing */
 }
@@ -188,12 +187,30 @@ input[type="checkbox"]{
 
 .nav-list li {
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.4s ease;
 }
 
 .nav-list li:hover {
     color: var(--accent-color);
 }
+
+/* Duration icon styles */
+.duration {
+    display: flex;
+    align-items: left;
+    cursor: pointer;
+    z-index: 101; /* Higher than time-list */
+    transition: transform 0.3s ease;
+    z-index: 101;
+    position: relative;
+}
+
+.duration:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+
 
 .shedule {
     display: inline-flex;
@@ -204,25 +221,94 @@ input[type="checkbox"]{
     border-radius: 8px;
     margin-left: auto; /* Pushes it to the right */
     align-self: flex-end; /* Aligns to the end (right) in flex containers */
+}
 
+/* Timeline container */
+.timeline-sections {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Individual timeline */
+.timeline-sections {
+    scroll-snap-align: start;
+    min-width: 100%;
+    padding: 15px;
+    display: none; /* Hidden by default */
+}
+
+.timeline.active {
+    display: block; /* Show active timeline */
 }
 
 .time-line {
     display: inline-flex;
     margin: 0 auto;
+    position: relative;
 }
 
-.time-list {
-    display: flex;
-    flex-direction: column;
+
+
+/* Timeline navigation */
+/* .time-list {
     list-style: none;
     gap: 15px;
     overflow-x: auto;
     padding: 0 15px;
     max-width: fit-content;
+    position: absolute;
+    right: 0;
+    background: var(--primary-color);
+    border-radius: 20px;
+    z-index: 100;
+    display: none;
+} */
+
+.time-list {
+    /* display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 0 15px;
+    max-width: fit-content; */
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: var(--primary-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+    transform: translateX(10px);
+    transition: transform 0.3s ease;
 }
 
+
+
+.time-list.active {
+    display: flex;
+    transform: translateX(0);
+}
+
+/* .time-list li {
+    display: flex;
+    align-items: right;
+    padding: 8px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s ease, color 0.3s ease;
+    border-radius: 20px;
+} */
+
 .time-line li {
+    display: flex;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 20px;
@@ -230,8 +316,8 @@ input[type="checkbox"]{
     transition: all 0.3s ease;
 }
 
-.time-line li:hover {
-    background-color: var(--accent-color);
+.time-list li:hover {
+    background: var(--accent-color);
     color: var(--background);
 }
 
@@ -240,6 +326,30 @@ input[type="checkbox"]{
     flex-direction: column;
     
 }
+
+.time-list.active ~ .duration {
+    transform: translateX(-50px);
+}
+
+.timeline-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 20px;
+}
+
+.timeline-section {
+    scroll-snap-align: start;
+    min-width: 100%;
+    display: none;
+}
+
+.timeline-section.active {
+    display: block;
+}
+
 
 /* Add this to your existing CSS */
 #todo-list {

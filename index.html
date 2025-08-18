@@ -51,8 +51,92 @@
         </div>
     </nav>
 
-
     <div class="wrapper">
+    <form>
+        <input type="text" id="todo-input" placeholder="Write your Goals" autocomplete="off">
+        <button id="add-button">ADD</button>
+    </form>
+
+    <!-- Timeline Sections Container -->
+    <div class="timeline-container">
+        <!-- Daily Timeline -->
+        <section class="timeline-section active" data-timeline="daily">
+            <h2 class="timeline-title">Daily Tasks</h2>
+            <ul class="todo-list"  id="daily-list"></ul>
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Daily Progress</span>
+                    <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weekly Timeline -->
+        <section class="timeline-section" data-timeline="weekly">
+            <h2 class="timeline-title">Weekly Tasks</h2>
+            <ul class="todo-list" id="weekly-list"></ul>
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Weekly Progress</span>
+                    <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Timeline -->
+        <section class="timeline-section" data-timeline="monthly">
+            <h2 class="timeline-title">Monthly Tasks</h2>
+            <ul class="todo-list" id="monthly-list"></ul>
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Monthly Progress</span>
+                    <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yearly Timeline -->
+        <section class="timeline-section" data-timeline="yearly">
+            <h2 class="timeline-title">Yearly Tasks</h2>
+            <ul class="todo-list" id="yearly-list"></ul>
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Yearly Progress</span>
+                    <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Time Timeline -->
+        <section class="timeline-section" data-timeline="custom">
+            <h2 class="timeline-title">Custom Time Tasks</h2>
+            <ul class="todo-list" id="custom-list"></ul>
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Custom Progress</span>
+                    <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+    <!-- <div class="wrapper">
         <form>
             <input type="text" id="todo-input" placeholder="Write your Goals" autocomplete="off">
             <button id="add-button">ADD</button>
@@ -70,7 +154,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" style="width: 0%"></div>
             </div>
-        </div>
+        </div> -->
 
 </body>
 
